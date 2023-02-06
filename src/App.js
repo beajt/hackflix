@@ -1,25 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import Catalogue from './Catalogue';
+import MovieDetails from './MovieDetails';
+import { Routes, Route } from 'react-router-dom';
+import ErrorPage from './ErrorPage';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="Wrapper">
+      <header>
+        <h1>Hackflix</h1>
       </header>
+      {/* create paths allowing us to render different things depending on the URL */}
+      <Routes>
+        {/* Show catalogue on default path */}
+        <Route path="/" element={ <Catalogue />} />
+        {/* Show the MovieDetails component on /movie/:movieID , passing it the movie ID*/}
+        <Route path="/movie/:movieID" element={ <MovieDetails /> }/>
+        {/* whatever is after : is our custom parameter */}
+        {/* Show the ErrorPage for routes that don't exist */}
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+      {/* Routes is container that holds all route */}
     </div>
   );
 }
 
 export default App;
+
+
+
+// load/movies/movieID(Where movie ID is the movie's ID)
+// load a component that calls our API with the movie's ID to get details about that movie
+// Put those details on the page 
+
+
