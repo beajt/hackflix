@@ -25,7 +25,7 @@ const MovieDetails = () => {
             setMovie(res.data);
             // set details to state
         })
-    }, []);
+    }, [movieID]);
 
     const {original_title, tagline, overview, poster_path} = movie;
     // create new variables for movie.original_title, movie.tagline, movie.overview, etc. makes it shorter. destructuring
